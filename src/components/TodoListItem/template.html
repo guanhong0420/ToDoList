@@ -1,0 +1,16 @@
+<div class="todoListItem">
+    <input type="text" 
+    v-model.trim="edit" 
+    v-if="edit !== null"
+    class="edit" 
+    v-focus
+    @keyup.enter="submitHandler" 
+    @keyup.esc="cancelHandler"
+    @blur="cancelHandler"> <!--blur當滑鼠移開焦點-->
+<template v-else>
+    <input type="checkbox" class="toggle" v-model="complate"> 
+    <!-- v-model不能綁this.complate 會動到store裡面的 -->
+    <label @dblclick="editHandler">{{ todo.content }}</label>
+    <button class="destory" @click="destoryHandler"></button>
+</template>
+</div>
